@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jidi.standard.mapper.StandardResultMapper">
+  <resultMap id="BaseResultMap" type="com.jidi.standard.entity.StandardResult">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="standard_date" jdbcType="DATE" property="standardDate" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
+    <result column="increase_num" jdbcType="INTEGER" property="increaseNum" />
+    <result column="increase_point" jdbcType="INTEGER" property="increasePoint" />
+    <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit" />
+    <result column="increase_detail" jdbcType="VARCHAR" property="increaseDetail" />
+    <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName" />
+    <result column="decrease_num" jdbcType="INTEGER" property="decreaseNum" />
+    <result column="decrease_point" jdbcType="INTEGER" property="decreasePoint" />
+    <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit" />
+    <result column="decrease_detail" jdbcType="VARCHAR" property="decreaseDetail" />
+    <result column="total_point" jdbcType="INTEGER" property="totalPoint" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
+    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
+  </resultMap>
+</mapper>

@@ -1,9 +1,9 @@
-package com.jidi.standard.controller;
+package com.jidi.standard.controller.standard;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jidi.standard.entity.Person;
-import com.jidi.standard.service.*;
+import com.jidi.standard.entity.IndexStatics;
+import com.jidi.standard.service.standard.IndexStaticsService;
 import com.jidi.standard.utils.Result;
 import com.jidi.standard.utils.ResultGenerator;
 import org.springframework.web.bind.annotation.*;
@@ -15,59 +15,57 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
 /**
- * Created by lichenghai on Wed Mar 28 21:41:11 GMT+08:00 2018.
- */
+* Created by lichenghai on Wed Apr 04 12:46:59 GMT+08:00 2018.
+*/
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/remove-me/standard-service/statics")
+public class IndexStaticsController {
     @Resource
-    private PersonService personService;
+    private IndexStaticsService indexStaticsService;
 
     @PostMapping("/add")
-    public Result add(@RequestBody Person person) {
-        //     person.setGlobalStateType(StateUtils.STATE_NORMAL);
-        //      person.setCreateTime(TextUtils.getNowTime());
-        personService.save(person);
-        return ResultGenerator.genSuccessResult(person);
+    public Result add(@RequestBody IndexStatics indexStatics) {
+   //     indexStatics.setGlobalStateType(StateUtils.STATE_NORMAL);
+  //      indexStatics.setCreateTime(TextUtils.getNowTime());
+        indexStaticsService.save(indexStatics);
+        return ResultGenerator.genSuccessResult(indexStatics);
     }
 
     @PostMapping("/add-batch")
-    public Result addBatch(@RequestBody List<Person> person) {
+    public Result addBatch(@RequestBody List<IndexStatics> indexStatics) {
     /*
-        for (Person api: person) {
+        for (IndexStatics api: indexStatics) {
             api.setGlobalStateType(StateUtils.STATE_NORMAL);
             api.setCreateTime(TextUtils.getNowTime());
         }
         */
-        personService.save(person);
-        return ResultGenerator.genSuccessResult(person);
+        indexStaticsService.save(indexStatics);
+        return ResultGenerator.genSuccessResult(indexStatics);
     }
 
     @GetMapping("/delete")
     public Result delete(@RequestParam(required = true) Integer id) {
-        personService.deleteById(id);
+        indexStaticsService.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/edit")
-    public Result update(@RequestBody Person person) {
-        personService.update(person);
-        return ResultGenerator.genSuccessResult(person);
+    public Result update(@RequestBody IndexStatics indexStatics) {
+        indexStaticsService.update(indexStatics);
+        return ResultGenerator.genSuccessResult(indexStatics);
     }
 
     @GetMapping("/get")
     public Result detail(@RequestParam(required = true) Integer id) {
-        Person person = personService.get(id);
-        return ResultGenerator.genSuccessResult(person);
+        IndexStatics indexStatics = indexStaticsService.get(id);
+        return ResultGenerator.genSuccessResult(indexStatics);
     }
 
     @GetMapping("/list")
     public Result list(@RequestParam(defaultValue = "null") Map<String,Object> params) {
         Integer page = 0,size = 0;
-        Condition condition = new Condition(Person.class);
+        Condition condition = new Condition(IndexStatics.class);
         Example.Criteria criteria = condition.createCriteria();
         if(params != null) {
             for(String key: params.keySet()) {
@@ -82,14 +80,14 @@ public class PersonController {
                     {
                         criteria.andEqualTo(key,params.get(key));
                     }
-                    break;
+                        break;
                 }
             }
         }
         if(page != 0 && size !=0) {
             PageHelper.startPage(page, size);
         }
-        List<Person> list = personService.list(condition);
+        List<IndexStatics> list = indexStaticsService.list(condition);
         if(page != 0 && size !=0) {
             PageInfo pageInfo = new PageInfo(list);
             Map<String,Object> result = new HashMap<String,Object>();

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jidi.standard.mapper.IndexDetailMapper">
+  <resultMap id="BaseResultMap" type="com.jidi.standard.entity.IndexDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
+    <result column="increase_point" jdbcType="INTEGER" property="increasePoint" />
+    <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit" />
+    <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName" />
+    <result column="decrease_point" jdbcType="INTEGER" property="decreasePoint" />
+    <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
+  </resultMap>
+</mapper>

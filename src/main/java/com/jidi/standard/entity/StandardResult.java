@@ -15,6 +15,9 @@ public class StandardResult {
     @Column(name = "department_id")
     private Integer departmentId;
 
+    @Column(name = "department_name")
+    private String departmentName;
+
     @Column(name = "standard_date")
     private Date standardDate;
 
@@ -62,8 +65,6 @@ public class StandardResult {
     @Column(name = "submit_time")
     private Date submitTime;
 
-    private String location;
-
     /**
      * @return id
      */
@@ -104,6 +105,20 @@ public class StandardResult {
      */
     public void setDepartmentId(Integer departmentId) {
         this.departmentId = departmentId;
+    }
+
+    /**
+     * @return department_name
+     */
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    /**
+     * @param departmentName
+     */
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     /**
@@ -328,19 +343,5 @@ public class StandardResult {
      */
     public void setSubmitTime(Date submitTime) {
         this.submitTime = submitTime;
-    }
-
-    /**
-     * @return location
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * @param location
-     */
-    public void setLocation(String location) {
-        this.location = location;
     }
 }

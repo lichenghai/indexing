@@ -1,4 +1,4 @@
-package com.jidi.standard.service;
+package com.jidi.standard.service.account;
 
 import com.jidi.standard.mapper.PersonMapper;
 import com.jidi.standard.entity.Person;
@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 /**
- * Created by lichenghai on Wed Mar 28 21:41:11 GMT+08:00 2018.
+ * Created by lichenghai on Wed Apr 04 12:46:59 GMT+08:00 2018.
  */
 @Service
 @Transactional

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jidi.standard.mapper.IndexStaticsMapper">
+  <resultMap id="BaseResultMap" type="com.jidi.standard.entity.IndexStatics">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+  </resultMap>
+</mapper>

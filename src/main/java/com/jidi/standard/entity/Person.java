@@ -1,6 +1,5 @@
 package com.jidi.standard.entity;
 
-import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,9 +8,6 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "department_id")
-    private Integer departmentId;
 
     private String account;
 
@@ -37,20 +33,6 @@ public class Person {
      */
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    /**
-     * @return department_id
-     */
-    public Integer getDepartmentId() {
-        return departmentId;
-    }
-
-    /**
-     * @param departmentId
-     */
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
     }
 
     /**
