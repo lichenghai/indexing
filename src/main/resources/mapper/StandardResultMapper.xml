@@ -26,4 +26,47 @@
     <result column="father_id" jdbcType="INTEGER" property="fatherId" />
     <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
   </resultMap>
+
+  <resultMap id="ResultForSearch" type="com.jidi.standard.entity.vo.ResultForSearch">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="person_id" jdbcType="INTEGER" property="personId" />
+    <result column="person_name" jdbcType="VARCHAR" property="personName" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="standard_date" jdbcType="DATE" property="standardDate" />
+    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
+    <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
+    <result column="total_point" jdbcType="INTEGER" property="totalPoint" />
+
+  </resultMap>
+
+  <select id="getResultForSearch" resultMap="ResultForSearch">
+    SELECT
+    s.id,
+    s.person_id,
+    p.username,
+    s.department_id,
+    s.department_name,
+    s.standard_date,
+    s.index_name,
+    '',
+    s.total_point
+    FROM
+    standard_result s,
+    person p
+    WHERE p.id = s.person_id
+
+    <if test="increaseType==2">
+      AND s.increase_num!=0
+    </if>
+    <if test="increaseType==1">
+      AND s.decrease_num!=0
+    </if>
+    <if test="timeStart != null">
+      <![CDATA[ AND s.standard_date >= #{timeStart,jdbcType=DATE}]]>
+    </if>
+    <if test="timeEnd != null">
+      <![CDATA[ AND s.standard_date <= #{timeEnd,jdbcType=DATE}]]>
+    </if>
+  </select>
 </mapper>
