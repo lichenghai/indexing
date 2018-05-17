@@ -7,6 +7,7 @@ import com.jidi.standard.service.standard.IndexDetailService;
 import com.jidi.standard.utils.Result;
 import com.jidi.standard.utils.ResultGenerator;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.entity.Example;
 
@@ -97,5 +98,14 @@ public class IndexDetailController {
         } else {
             return ResultGenerator.genSuccessResult(list);
         }
+    }
+
+    @PostMapping("/upload")
+    public Result upload(@RequestParam(value = "template", required = true) MultipartFile template) {
+        if(template!=null){
+            //进行操作吧
+            System.out.println(template.getOriginalFilename());
+        }
+        return ResultGenerator.genSuccessResult(null);
     }
 }

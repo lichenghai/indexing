@@ -98,4 +98,25 @@ public class AdminController {
             return ResultGenerator.genSuccessResult(list);
         }
     }
+
+
+
+    @PostMapping("/login")
+    public Result login(@RequestParam(defaultValue = "null") Map<String, Object> params) {
+        Condition condition = new Condition(Admin.class);
+        Example.Criteria criteria = condition.createCriteria();
+        String account = params.get("account").toString();
+        String password = params.get("password").toString();
+        if (null == account || null == password || "".equals(account) || "".equals(password))
+            return ResultGenerator.genFailResult("用户名或密码错误！");
+        System.out.println("account:"+account+"password:"+password);
+
+        criteria.andEqualTo("account", account);
+        criteria.andEqualTo("password", password);
+
+        List<Admin> list = adminService.list(condition);
+        if (list.size() > 0)
+            return ResultGenerator.genSuccessResult(list.get(0));
+        else return ResultGenerator.genFailResult("用户名或密码错误！");
+    }
 }

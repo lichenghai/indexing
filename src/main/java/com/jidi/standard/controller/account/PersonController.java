@@ -76,6 +76,23 @@ public class PersonController {
                     case "size":
                         size = Integer.parseInt((String) params.get("size"));
                         break;
+                    case "role":
+                        int role = Integer.parseInt((String) params.get("role"));
+                        break;
+                    case "username":
+                        String username = (String)params.get("username");
+                        if(!"".equals(username)){
+                            username = "%" +username + "%";
+                            criteria.andLike("username", username);
+                        }
+                        break;
+                    case "account":
+                        String account = (String)params.get("account");
+                        if(!"".equals(account)){
+                            account = "%" +account + "%";
+                            criteria.andLike("account", account);
+                        }
+                        break;
                     default: {
                         criteria.andEqualTo(key, params.get(key));
                     }
@@ -106,7 +123,7 @@ public class PersonController {
         String password = params.get("password").toString();
         if (null == account || null == password || "".equals(account) || "".equals(password))
             return ResultGenerator.genFailResult("用户名或密码错误！");
-        System.out.println("account:"+account+"password:"+password);
+        System.out.println("account:" + account + "password:" + password);
 
         criteria.andEqualTo("account", account);
         criteria.andEqualTo("password", password);
@@ -115,6 +132,5 @@ public class PersonController {
         if (list.size() > 0)
             return ResultGenerator.genSuccessResult(list.get(0));
         else return ResultGenerator.genFailResult("用户名或密码错误！");
-
     }
 }

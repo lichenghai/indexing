@@ -23,7 +23,9 @@ public class StandardResultService extends AbstractService<StandardResult> {
 
     /**
      * 查询带tagId的作物
-     * @param params
+     * @param increaseType:得分、扣分
+     *         commentType:是否含评语
+     *         timeStart、  timeEnd:开始、截止时间
      * @return
      */
     public List<ResultForSearch> getResultForSearch(int increaseType, int commentType, Date timeStart,Date timeEnd){

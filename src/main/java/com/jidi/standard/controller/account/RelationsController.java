@@ -25,7 +25,7 @@ public class RelationsController {
     private RelationsService relationsService;
 
     @PostMapping("/add")
-    public Result add(@RequestBody Relations relations) {
+    public Result add( Relations relations) {
    //     relations.setGlobalStateType(StateUtils.STATE_NORMAL);
   //      relations.setCreateTime(TextUtils.getNowTime());
         relationsService.save(relations);
@@ -33,7 +33,7 @@ public class RelationsController {
     }
 
     @PostMapping("/add-batch")
-    public Result addBatch(@RequestBody List<Relations> relations) {
+    public Result addBatch( List<Relations> relations) {
     /*
         for (Relations api: relations) {
             api.setGlobalStateType(StateUtils.STATE_NORMAL);
