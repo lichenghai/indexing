@@ -18,7 +18,7 @@ public class IndexDetail {
     private String increaseName;
 
     @Column(name = "increase_point")
-    private Integer increasePoint;
+    private Double increasePoint;
 
     @Column(name = "increase_unit")
     private String increaseUnit;
@@ -27,7 +27,7 @@ public class IndexDetail {
     private String decreaseName;
 
     @Column(name = "decrease_point")
-    private Integer decreasePoint;
+    private Double decreasePoint;
 
     @Column(name = "decrease_unit")
     private String decreaseUnit;
@@ -93,19 +93,6 @@ public class IndexDetail {
         this.increaseName = increaseName;
     }
 
-    /**
-     * @return increase_point
-     */
-    public Integer getIncreasePoint() {
-        return increasePoint;
-    }
-
-    /**
-     * @param increasePoint
-     */
-    public void setIncreasePoint(Integer increasePoint) {
-        this.increasePoint = increasePoint;
-    }
 
     /**
      * @return increase_unit
@@ -135,19 +122,6 @@ public class IndexDetail {
         this.decreaseName = decreaseName;
     }
 
-    /**
-     * @return decrease_point
-     */
-    public Integer getDecreasePoint() {
-        return decreasePoint;
-    }
-
-    /**
-     * @param decreasePoint
-     */
-    public void setDecreasePoint(Integer decreasePoint) {
-        this.decreasePoint = decreasePoint;
-    }
 
     /**
      * @return decrease_unit
@@ -189,5 +163,21 @@ public class IndexDetail {
      */
     public void setFatherId(Integer fatherId) {
         this.fatherId = fatherId;
+    }
+
+    public Double getIncreasePoint() {
+        return increasePoint;
+    }
+
+    public void setIncreasePoint(Double increasePoint) {
+        this.increasePoint = increasePoint;
+    }
+
+    public Double getDecreasePoint() {
+        return decreasePoint;
+    }
+
+    public void setDecreasePoint(Double decreasePoint) {
+        this.decreasePoint = decreasePoint;
     }
 }

@@ -9,10 +9,10 @@
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
     <result column="index_name" jdbcType="VARCHAR" property="indexName" />
     <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
-    <result column="increase_point" jdbcType="INTEGER" property="increasePoint" />
+    <result column="increase_point" jdbcType="DOUBLE" property="increasePoint" />
     <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit" />
     <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName" />
-    <result column="decrease_point" jdbcType="INTEGER" property="decreasePoint" />
+    <result column="decrease_point" jdbcType="DOUBLE" property="decreasePoint" />
     <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit" />
     <result column="level" jdbcType="INTEGER" property="level" />
     <result column="father_id" jdbcType="INTEGER" property="fatherId" />
