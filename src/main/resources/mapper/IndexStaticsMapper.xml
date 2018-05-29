@@ -5,9 +5,10 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="person_id" jdbcType="INTEGER" property="personId" />
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
     <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="record_date" jdbcType="DATE" property="recordDate" />
   </resultMap>
 </mapper>

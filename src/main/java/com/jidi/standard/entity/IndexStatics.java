@@ -1,13 +1,13 @@
 package com.jidi.standard.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "index_statics")
 public class IndexStatics {
     @Id
-    private Integer ids;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "person_id")
     private Integer personId;
@@ -17,18 +17,21 @@ public class IndexStatics {
 
     private Integer score;
 
+    @Column(name = "record_date")
+    private Date recordDate;
+
     /**
-     * @return ids
+     * @return id
      */
-    public Integer getIds() {
-        return ids;
+    public Integer getId() {
+        return id;
     }
 
     /**
-     * @param ids
+     * @param id
      */
-    public void setIds(Integer ids) {
-        this.ids = ids;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
@@ -71,5 +74,19 @@ public class IndexStatics {
      */
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    /**
+     * @return record_date
+     */
+    public Date getRecordDate() {
+        return recordDate;
+    }
+
+    /**
+     * @param recordDate
+     */
+    public void setRecordDate(Date recordDate) {
+        this.recordDate = recordDate;
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* Created by lichenghai on Wed Apr 04 12:46:59 GMT+08:00 2018.
+* Created by lichenghai on Tue May 29 23:48:51 GMT+08:00 2018.
 */
 @RestController
 @RequestMapping("/remove-me/standard-service/statics")
