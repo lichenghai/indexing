@@ -22,7 +22,7 @@ public class StandardResultService extends AbstractService<StandardResult> {
     private StandardResultMapper standardResultMapper;
 
     /**
-     * 查询带tagId的作物
+     * 前台查询页面
      * @param increaseType:得分、扣分
      *         commentType:是否含评语
      *         timeStart、  timeEnd:开始、截止时间

@@ -11,13 +11,15 @@ import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
-* Created by lichenghai on Tue May 29 23:48:51 GMT+08:00 2018.
-*/
+ * Created by lichenghai on Tue May 29 23:48:51 GMT+08:00 2018.
+ */
 @RestController
 @RequestMapping("/remove-me/standard-service/statics")
 public class IndexStaticsController {
@@ -26,8 +28,8 @@ public class IndexStaticsController {
 
     @PostMapping("/add")
     public Result add(@RequestBody IndexStatics indexStatics) {
-   //     indexStatics.setGlobalStateType(StateUtils.STATE_NORMAL);
-  //      indexStatics.setCreateTime(TextUtils.getNowTime());
+        //     indexStatics.setGlobalStateType(StateUtils.STATE_NORMAL);
+        //      indexStatics.setCreateTime(TextUtils.getNowTime());
         indexStaticsService.save(indexStatics);
         return ResultGenerator.genSuccessResult(indexStatics);
     }
@@ -63,39 +65,77 @@ public class IndexStaticsController {
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(defaultValue = "null") Map<String,Object> params) {
-        Integer page = 0,size = 0;
+    public Result list(@RequestParam(defaultValue = "null") Map<String, Object> params) {
+        Integer page = 0, size = 0;
         Condition condition = new Condition(IndexStatics.class);
         Example.Criteria criteria = condition.createCriteria();
-        if(params != null) {
-            for(String key: params.keySet()) {
+        if (params != null) {
+            for (String key : params.keySet()) {
                 switch (key) {
                     case "page":
-                        page = Integer.parseInt((String)params.get("page"));
+                        page = Integer.parseInt((String) params.get("page"));
                         break;
                     case "size":
-                        size = Integer.parseInt((String)params.get("size"));
+                        size = Integer.parseInt((String) params.get("size"));
                         break;
-                    default:
-                    {
-                        criteria.andEqualTo(key,params.get(key));
+                    default: {
+                        criteria.andEqualTo(key, params.get(key));
                     }
-                        break;
+                    break;
                 }
             }
         }
-        if(page != 0 && size !=0) {
+        if (page != 0 && size != 0) {
             PageHelper.startPage(page, size);
         }
         List<IndexStatics> list = indexStaticsService.list(condition);
-        if(page != 0 && size !=0) {
+        if (page != 0 && size != 0) {
             PageInfo pageInfo = new PageInfo(list);
-            Map<String,Object> result = new HashMap<String,Object>();
-            result.put("list",list);
-            result.put("total",pageInfo.getTotal());
+            Map<String, Object> result = new HashMap<String, Object>();
+            result.put("list", list);
+            result.put("total", pageInfo.getTotal());
             return ResultGenerator.genSuccessResult(result);
         } else {
             return ResultGenerator.genSuccessResult(list);
         }
+    }
+
+
+    @GetMapping("/search")
+    public Result search(@RequestParam(defaultValue = "null") Map<String, Object> params) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Integer personId = 0, departmentId = 0;
+        Date timeStart = new Date(0), timeEnd = new Date();
+        String dateStr = "";
+        try {
+            if (params != null) {
+                for (String key : params.keySet()) {
+                    switch (key) {
+                        case "timeStart":
+                            dateStr = (String) params.get("timeStart");
+                            if (dateStr != null && dateStr != "")
+                                timeStart = sdf.parse(dateStr);
+                            break;
+                        case "timeEnd":
+                            dateStr = (String) params.get("timeEnd");
+                            if (dateStr != null && dateStr != "")
+                                timeEnd = sdf.parse((String) params.get("timeEnd"));
+                            break;
+                        case "personId":
+                            personId = Integer.parseInt((String) params.get("personId"));
+                            break;
+                        case "departmentId":
+                            departmentId = Integer.parseInt((String) params.get("departmentId"));
+                            break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        List<IndexStatics> list = indexStaticsService.search(personId, departmentId, timeStart, timeEnd);
+
+        return ResultGenerator.genSuccessResult(list);
+
     }
 }

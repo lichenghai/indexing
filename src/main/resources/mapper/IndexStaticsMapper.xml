@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jidi.standard.mapper.IndexStaticsMapper">
-  <resultMap id="BaseResultMap" type="com.jidi.standard.entity.IndexStatics">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="person_id" jdbcType="INTEGER" property="personId" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
-    <result column="score" jdbcType="INTEGER" property="score" />
-    <result column="record_date" jdbcType="DATE" property="recordDate" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.jidi.standard.entity.IndexStatics">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="person_id" jdbcType="INTEGER" property="personId"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="score" jdbcType="INTEGER" property="score"/>
+        <result column="record_date" jdbcType="DATE" property="recordDate"/>
+    </resultMap>
+    <select id="search" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        index_statics s
+        WHERE
+        s.person_id=#{personId,jdbcType=INTEGER}
+        AND s.department_id=#{departmentId,jdbcType=INTEGER}
+        <if test="timeStart != null">
+            <![CDATA[ AND s.record_date >= #{timeStart,jdbcType=DATE}]]>
+        </if>
+        <if test="timeEnd != null">
+            <![CDATA[ AND s.record_date <= #{timeEnd,jdbcType=DATE}]]>
+        </if>
+    </select>
 </mapper>
