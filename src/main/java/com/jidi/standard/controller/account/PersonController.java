@@ -123,8 +123,6 @@ public class PersonController {
         String password = params.get("password").toString();
         if (null == account || null == password || "".equals(account) || "".equals(password))
             return ResultGenerator.genFailResult("用户名或密码错误！");
-        System.out.println("account:" + account + "password:" + password);
-
         criteria.andEqualTo("account", account);
         criteria.andEqualTo("password", password);
 
