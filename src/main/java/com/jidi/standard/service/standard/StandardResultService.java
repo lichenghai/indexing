@@ -26,10 +26,11 @@ public class StandardResultService extends AbstractService<StandardResult> {
      * @param increaseType:得分、扣分
      *         commentType:是否含评语
      *         timeStart、  timeEnd:开始、截止时间
+     *         personId:人员id
      * @return
      */
-    public List<ResultForSearch> getResultForSearch(int increaseType, int commentType, Date timeStart,Date timeEnd){
-        return standardResultMapper.getResultForSearch(increaseType,0,timeStart,timeEnd);
+    public List<ResultForSearch> getResultForSearch(int increaseType, int commentType, Date timeStart,Date timeEnd,int personId){
+        return standardResultMapper.getResultForSearch(increaseType,0,timeStart,timeEnd,personId);
     }
 
 }

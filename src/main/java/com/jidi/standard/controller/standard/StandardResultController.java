@@ -101,8 +101,8 @@ public class StandardResultController {
     @GetMapping("/search")
     public Result search(@RequestParam(defaultValue = "null") Map<String, Object> params) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Integer page = 0, size = 0,increaseType=0;
-        Date timeStart=new Date(0),timeEnd=new Date();
+        Integer page = 0, size = 0, increaseType = 0, personId = 0;
+        Date timeStart = new Date(0), timeEnd = new Date();
         String dateStr = "";
         try {
             if (params != null) {
@@ -115,13 +115,13 @@ public class StandardResultController {
                             size = Integer.parseInt((String) params.get("size"));
                             break;
                         case "timeStart":
-                             dateStr = (String) params.get("timeStart");
-                            if(dateStr!=null&&dateStr!="")
-                            timeStart = sdf.parse(dateStr);
+                            dateStr = (String) params.get("timeStart");
+                            if (dateStr != null && dateStr != "")
+                                timeStart = sdf.parse(dateStr);
                             break;
                         case "timeEnd":
-                             dateStr = (String) params.get("timeEnd");
-                            if(dateStr!=null&&dateStr!="")
+                            dateStr = (String) params.get("timeEnd");
+                            if (dateStr != null && dateStr != "")
                                 timeEnd = sdf.parse((String) params.get("timeEnd"));
                             break;
                         case "commentType":
@@ -129,17 +129,22 @@ public class StandardResultController {
                         case "increaseType":
                             increaseType = Integer.parseInt((String) params.get("increaseType"));
                             break;
+                        case "personId":
+                            personId = Integer.parseInt((String) params.get("personId"));
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (page != 0 && size != 0) {
             PageHelper.startPage(page, size);
         }
 
-        List<ResultForSearch> list = standardResultService.getResultForSearch(increaseType,0,timeStart,timeEnd);
+        List<ResultForSearch> list = standardResultService.getResultForSearch(increaseType, 0, timeStart, timeEnd, personId);
         if (page != 0 && size != 0) {
             PageInfo pageInfo = new PageInfo(list);
             Map<String, Object> result = new HashMap<String, Object>();

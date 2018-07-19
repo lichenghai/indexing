@@ -14,6 +14,7 @@ public interface StandardResultMapper extends Mapper<StandardResult> {
             @Param("increaseType") Integer increaseType,
             @Param("commentType") Integer commentType,
             @Param("timeStart") Date timeStart,
-            @Param("timeEnd") Date timeEnd);
+            @Param("timeEnd") Date timeEnd,
+            @Param("personId") Integer personId);
 
 }

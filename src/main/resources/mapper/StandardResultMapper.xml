@@ -1,72 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jidi.standard.mapper.StandardResultMapper">
-  <resultMap id="BaseResultMap" type="com.jidi.standard.entity.StandardResult">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="person_id" jdbcType="INTEGER" property="personId" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
-    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
-    <result column="standard_date" jdbcType="DATE" property="standardDate" />
-    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
-    <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
-    <result column="increase_num" jdbcType="INTEGER" property="increaseNum" />
-    <result column="increase_point" jdbcType="DOUBLE" property="increasePoint" />
-    <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit" />
-    <result column="increase_detail" jdbcType="VARCHAR" property="increaseDetail" />
-    <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName" />
-    <result column="decrease_num" jdbcType="INTEGER" property="decreaseNum" />
-    <result column="decrease_point" jdbcType="DOUBLE" property="decreasePoint" />
-    <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit" />
-    <result column="decrease_detail" jdbcType="VARCHAR" property="decreaseDetail" />
-    <result column="total_point" jdbcType="INTEGER" property="totalPoint" />
-    <result column="level" jdbcType="INTEGER" property="level" />
-    <result column="father_id" jdbcType="INTEGER" property="fatherId" />
-    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.jidi.standard.entity.StandardResult">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="person_id" jdbcType="INTEGER" property="personId"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+        <result column="standard_date" jdbcType="DATE" property="standardDate"/>
+        <result column="index_name" jdbcType="VARCHAR" property="indexName"/>
+        <result column="increase_name" jdbcType="VARCHAR" property="increaseName"/>
+        <result column="increase_num" jdbcType="INTEGER" property="increaseNum"/>
+        <result column="increase_point" jdbcType="DOUBLE" property="increasePoint"/>
+        <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit"/>
+        <result column="increase_detail" jdbcType="VARCHAR" property="increaseDetail"/>
+        <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName"/>
+        <result column="decrease_num" jdbcType="INTEGER" property="decreaseNum"/>
+        <result column="decrease_point" jdbcType="DOUBLE" property="decreasePoint"/>
+        <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit"/>
+        <result column="decrease_detail" jdbcType="VARCHAR" property="decreaseDetail"/>
+        <result column="total_point" jdbcType="INTEGER" property="totalPoint"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="father_id" jdbcType="INTEGER" property="fatherId"/>
+        <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime"/>
+    </resultMap>
 
-  <resultMap id="ResultForSearch" type="com.jidi.standard.entity.vo.ResultForSearch">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="person_id" jdbcType="INTEGER" property="personId" />
-    <result column="person_name" jdbcType="VARCHAR" property="personName" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
-    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
-    <result column="standard_date" jdbcType="DATE" property="standardDate" />
-    <result column="index_name" jdbcType="VARCHAR" property="indexName" />
-    <result column="increase_name" jdbcType="VARCHAR" property="increaseName" />
-    <result column="total_point" jdbcType="INTEGER" property="totalPoint" />
+    <resultMap id="ResultForSearch" type="com.jidi.standard.entity.vo.ResultForSearch">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="person_id" jdbcType="INTEGER" property="personId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+        <result column="standard_date" jdbcType="DATE" property="standardDate"/>
+        <result column="index_name" jdbcType="VARCHAR" property="indexName"/>
+        <result column="increase_name" jdbcType="VARCHAR" property="increaseName"/>
+        <result column="increase_num" jdbcType="INTEGER" property="increaseNum"/>
+        <result column="increase_point" jdbcType="DOUBLE" property="increasePoint"/>
+        <result column="increase_unit" jdbcType="VARCHAR" property="increaseUnit"/>
+        <result column="increase_detail" jdbcType="VARCHAR" property="increaseDetail"/>
+        <result column="decrease_name" jdbcType="VARCHAR" property="decreaseName"/>
+        <result column="decrease_num" jdbcType="INTEGER" property="decreaseNum"/>
+        <result column="decrease_point" jdbcType="DOUBLE" property="decreasePoint"/>
+        <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit"/>
+        <result column="decrease_detail" jdbcType="VARCHAR" property="decreaseDetail"/>
+        <result column="total_point" jdbcType="INTEGER" property="totalPoint"/>
+        <collection property="leadercomment" ofType="com.jidi.standard.entity.LeaderComment"
+                    select="selectLeaderComment" column="id">
+        </collection>
+    </resultMap>
+    <resultMap id="LeaderCommentResultMap" type="com.jidi.standard.entity.vo.LeaderCommentVo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="stand_id" jdbcType="INTEGER" property="standId"/>
+        <result column="leader_id" jdbcType="INTEGER" property="leaderId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+        <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime"/>
+    </resultMap>
 
-  </resultMap>
-
-  <select id="getResultForSearch" resultMap="ResultForSearch">
-    SELECT
-    s.id,
-    s.person_id,
-    p.username,
-    s.department_id,
-    s.department_name,
-    s.standard_date,
-    s.index_name,
-    '',
-    s.total_point
+    <select id="selectLeaderComment" parameterType="int" resultMap="LeaderCommentResultMap">
+    SELECT l.id,l.stand_id,l.leader_id,p.username,l.comment_content,l.comment_time
     FROM
-    standard_result s,
+    leader_comment l,
     person p
-    WHERE p.id = s.person_id
-
-    <if test="increaseType==2">
-      AND s.increase_num!=0
-    </if>
-    <if test="increaseType==1">
-      AND s.decrease_num!=0
-    </if>
-    <if test="timeStart != null">
-      <![CDATA[ AND s.standard_date >= #{timeStart,jdbcType=DATE}]]>
-    </if>
-    <if test="timeEnd != null">
-      <![CDATA[ AND s.standard_date <= #{timeEnd,jdbcType=DATE}]]>
-    </if>
+  WHERE stand_id = #{id} AND p.id = l.leader_id
   </select>
+
+    <select id="getResultForSearch" resultMap="ResultForSearch">
+        SELECT
+        s.id,
+        s.person_id,
+        p.username,
+        s.department_id,
+        s.department_name,
+        s.standard_date,
+        s.index_name,
+        s.increase_name,
+        s.increase_num,
+        s.increase_point,
+        s.increase_unit,
+        s.increase_detail,
+        s.decrease_name,
+        s.decrease_num,
+        s.decrease_point,
+        s.decrease_unit,
+        s.decrease_detail,
+        s.total_point
+        FROM
+        standard_result s,
+        person p
+        WHERE p.id = s.person_id
+        AND s.level=1
+
+        <if test="increaseType==2">
+            AND s.increase_num!=0
+        </if>
+        <if test="increaseType==1">
+            AND s.decrease_num!=0
+        </if>
+        <if test="personId!=0">
+            AND s.person_id=#{personId,jdbcType=INTEGER}
+        </if>
+        <if test="timeStart != null">
+            <![CDATA[ AND s.standard_date >= #{timeStart,jdbcType=DATE}]]>
+        </if>
+        <if test="timeEnd != null">
+            <![CDATA[ AND s.standard_date <= #{timeEnd,jdbcType=DATE}]]>
+        </if>
+    </select>
 </mapper>
