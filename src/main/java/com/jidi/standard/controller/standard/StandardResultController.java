@@ -101,7 +101,7 @@ public class StandardResultController {
     @GetMapping("/search")
     public Result search(@RequestParam(defaultValue = "null") Map<String, Object> params) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Integer page = 0, size = 0, increaseType = 0, personId = 0;
+        Integer page = 0, size = 0, increaseType = 0, personId = 0, commentType = 0;
         Date timeStart = new Date(0), timeEnd = new Date();
         String dateStr = "";
         try {
@@ -125,6 +125,7 @@ public class StandardResultController {
                                 timeEnd = sdf.parse((String) params.get("timeEnd"));
                             break;
                         case "commentType":
+                            commentType = Integer.parseInt((String) params.get("commentType"));
                             break;
                         case "increaseType":
                             increaseType = Integer.parseInt((String) params.get("increaseType"));
@@ -145,6 +146,30 @@ public class StandardResultController {
         }
 
         List<ResultForSearch> list = standardResultService.getResultForSearch(increaseType, 0, timeStart, timeEnd, personId);
+        if (commentType != 0) {
+            Iterator it = list.iterator();
+            ResultForSearch resultForSearch = new ResultForSearch();
+            switch (commentType) {
+                case 1:
+                    while (it.hasNext()) {
+                        resultForSearch = (ResultForSearch) it.next();
+                        if (resultForSearch.getLeaderComment().size() < 1) {
+                            it.remove();
+                        }
+                    }
+                    break;
+                case 2:
+                    while (it.hasNext()) {
+                        resultForSearch = (ResultForSearch) it.next();
+                        if (resultForSearch.getLeaderComment().size() > 0) {
+                            it.remove();
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
         if (page != 0 && size != 0) {
             PageInfo pageInfo = new PageInfo(list);
             Map<String, Object> result = new HashMap<String, Object>();

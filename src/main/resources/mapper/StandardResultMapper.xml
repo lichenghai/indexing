@@ -46,7 +46,7 @@
         <result column="decrease_unit" jdbcType="VARCHAR" property="decreaseUnit"/>
         <result column="decrease_detail" jdbcType="VARCHAR" property="decreaseDetail"/>
         <result column="total_point" jdbcType="INTEGER" property="totalPoint"/>
-        <collection property="leadercomment" ofType="com.jidi.standard.entity.LeaderComment"
+        <collection property="leaderComment" ofType="com.jidi.standard.entity.LeaderComment"
                     select="selectLeaderComment" column="id">
         </collection>
     </resultMap>

@@ -64,8 +64,8 @@ public class ResultForSearch {
     @Column(name = "total_point")
     private Integer totalPoint;
 
-    @Column(name = "leadercomment")
-    private List<LeaderComment> leadercomment;
+    @Column(name = "leaderComment")
+    private List<LeaderComment> leaderComment;
 
     public Integer getId() {
         return id;
@@ -203,12 +203,12 @@ public class ResultForSearch {
         this.decreaseDetail = decreaseDetail;
     }
 
-    public List<LeaderComment> getLeadercomment() {
-        return leadercomment;
+    public List<LeaderComment> getLeaderComment() {
+        return leaderComment;
     }
 
-    public void setLeadercomment(List<LeaderComment> leadercomment) {
-        this.leadercomment = leadercomment;
+    public void setLeaderComment(List<LeaderComment> leaderComment) {
+        this.leaderComment = leaderComment;
     }
 
     public Integer getTotalPoint() {
